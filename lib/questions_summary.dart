@@ -16,7 +16,7 @@ class QuestionsSummary extends StatelessWidget {
                     Text(data['question'] as String),
                     SizedBox(height: 10),
                     Text(data['user_answer'] as String),
-                    Text(data['correct_asnwer'] as String),
+                    Text(data['correct_answer'] as String),
                   ],
                 ),
               ],
