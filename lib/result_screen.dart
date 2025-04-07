@@ -6,7 +6,7 @@ class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key, required this.chosenAnswers});
 
   final List<String> chosenAnswers;
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final summaryData = getSummaryData();
+    // final summaryData = summaryData;
     final numTotalQuestions = questions.length;
     final numCorrectQuestions =
         summaryData.where((data) {
