@@ -3,9 +3,15 @@ import 'package:adv_basics/questions_summary.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswers});
+  const ResultScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.onRestart,
+  });
 
   final List<String> chosenAnswers;
+  final void Function() onRestart;
+
   List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
 
@@ -31,21 +37,37 @@ class ResultScreen extends StatelessWidget {
             .where((data) => data['user_answer'] == data['correct_answer'])
             .length;
 
-    return SizedBox(
-      width: double.infinity,
+    return Center(
       child: Container(
-        margin: const EdgeInsets.all(40),
+        margin: const EdgeInsets.all(20),
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // SizedBox(height: 0),
             Text(
-              style: TextStyle(fontSize: 20),
-              'You answered $numCorrectQuestions out of $numTotalQuestions questions Correctly',
+              'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(189, 128, 255, 1),
+              ),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
+
             QuestionsSummary(summaryData),
-            SizedBox(height: 30),
-            TextButton(onPressed: () {}, child: Text('Restart Quiz')),
+
+            const SizedBox(height: 30),
+            ElevatedButton.icon(
+              onPressed: onRestart,
+              icon: const Icon(Icons.restart_alt),
+              label: const Text('Restart Quiz'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+              ),
+            ),
           ],
         ),
       ),
