@@ -59,14 +59,14 @@ class ResultScreen extends StatelessWidget {
             QuestionsSummary(summaryData),
 
             const SizedBox(height: 30),
-            ElevatedButton.icon(
+            OutlinedButton.icon(
               onPressed: onRestart,
-              icon: const Icon(Icons.restart_alt),
-              label: const Text('Restart Quiz'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
+              style: OutlinedButton.styleFrom(
+                // backgroundColor: Colors.purple,
                 foregroundColor: Colors.white,
               ),
+              icon: const Icon(Icons.restart_alt),
+              label: const Text('Restart Quiz'),
             ),
           ],
         ),
